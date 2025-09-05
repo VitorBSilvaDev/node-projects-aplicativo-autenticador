@@ -5,7 +5,8 @@ const users = [
     { email: "user@example.com", passwordHash: "HASH_DA_SENHA"} // HASH_DA_SENHA - Placeholder
 ]
 
-// initializeUsers() - armazena em um hash o valor de retorno do método .hash para a senha 'password123' com salt 10
+// initializeUsers() - armazena em um hash o valor de retorno do método .hash para a senha 'password123' com salt 10,
+// criptografando a senha
 async function initializeUsers() {
     const hash = await bcrypt.hash('password123', 10);
     users[0].passwordHash = hash;

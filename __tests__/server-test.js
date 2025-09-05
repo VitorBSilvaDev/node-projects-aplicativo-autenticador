@@ -9,7 +9,7 @@ describe('Teste de login', () => {
         await initializeUsers();
     });
 
-    // it - 
+    // it - Define um caso de teste com descrição e lógica de execução
     it('Deve retornar sucesso com credenciais válidas', async () => {
 
         const res = await request(app)

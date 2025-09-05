@@ -4,8 +4,7 @@ import { users, initializeUsers } from './data.js';
 
 const app = express();
 
-// Middleware - Chama uma função antes de realizar a requisição
-
+// "Middleware" - Chama uma função antes de realizar cada requisição
 // express.json() - Primeiro verifica se é objeto json, se sim converte para javascript e armazena na req.body
 app.use(express.json());
 
