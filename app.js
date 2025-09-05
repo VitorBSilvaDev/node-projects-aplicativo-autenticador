@@ -18,7 +18,7 @@ app.post('/login', async (req, res) => {
     try {
         // Verifica se o email ou senha retornam false com operador NOT (!), se forem null ou undefined, então cai no if
         if (!email || !password) {
-            // Para o código, instancia um novo objeto Error e pula para o bloco catch 
+            // Instancía um novo objeto Error e pula para o bloco catch 
             throw new Error('Email e senha são obrigatórios.')
         }
 
@@ -27,7 +27,6 @@ app.post('/login', async (req, res) => {
 
         // Se não for igual ao email da requisição, então 
         if (!user) {
-            // Para o código, instancia um novo objeto Error e pula para o bloco catch 
             throw new Error('Usuário não encontrado.');
         }
 
@@ -47,9 +46,9 @@ app.post('/login', async (req, res) => {
         // 500 - Status padrão de erro (genérico)
         let statusCode = 500;
         if (err.message === 'Email e senha são obrigatórios.') {
-            statusCode = 400; // Requisição inválida (corpo da requisição)
+            statusCode = 400; // Requisição inválida (erro no formato da requisição)
         } else if (err.message === 'Usuário não encontrado.' || err.message === 'Credenciais inválidas.') {
-            statusCode = 401; // Não autorizado (credenciais inválidas)
+            statusCode = 401; // Não autorizado (erro na validação dos dados enviados)
         }
 
         res.status(statusCode).send({ error: err.message })

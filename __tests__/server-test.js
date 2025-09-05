@@ -4,7 +4,7 @@ import { app, initializeUsers } from '../app.js';
 // describe() - Define um conjunto de testes para a funcionalidade de login
 describe('Teste de login', () => {
     // beforeAll() - Um hook que prioriza a execução do initializeUsers antes de começar os testes
-    // Resolvendo o problema 
+    // garantindo a inicialização da base de dados simulada antes de começar os testes
     beforeAll(async () => {
         await initializeUsers();
     });

@@ -6,7 +6,7 @@ const users = [
 ]
 
 // initializeUsers() - armazena em um hash o valor de retorno do método .hash para a senha 'password123' com salt 10,
-// criptografando a senha
+// e armazena como novo valor para a senha do usuário [0], agora possuindo uma senha criptografada.
 async function initializeUsers() {
     const hash = await bcrypt.hash('password123', 10);
     users[0].passwordHash = hash;
