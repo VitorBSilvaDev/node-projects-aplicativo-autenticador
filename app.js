@@ -16,7 +16,7 @@ app.post('/login', async (req, res) => {
 
     // Tratamento de erros fazendo uma verificação simples antes de prosseguir com a logica de autenticação
     try {
-        // Verifica se o email ou senha retornam false com operador NOT (!), se forem null ou undefined, então cai no if
+        // Verifica se o email ou senha retornam false com operador NOT (!), se forem null ou undefined, então cairá no if
         if (!email || !password) {
             // Instancía um novo objeto Error e pula para o bloco catch 
             throw new Error('Email e senha são obrigatórios.')
@@ -40,10 +40,12 @@ app.post('/login', async (req, res) => {
 
         // Passando todos os testes, é enviado status 200 (sucesso) e a mensagem de sucesso em json
         res.status(200).send({ message: 'Login bem-sucedido.' })
+
+        // Captura o objeto de erro existente
     } catch (err) {
         // Lógica de tratamento de exceções 
 
-        // 500 - Status padrão de erro (genérico)
+        // 500 - Status padrão de erro (erro genérico)
         let statusCode = 500;
         if (err.message === 'Email e senha são obrigatórios.') {
             statusCode = 400; // Requisição inválida (erro no formato da requisição)
@@ -51,7 +53,7 @@ app.post('/login', async (req, res) => {
             statusCode = 401; // Não autorizado (erro na validação dos dados enviados)
         }
 
-        res.status(statusCode).send({ error: err.message })
+        res.status(statusCode).send({ error: err.message }) // Envia a mensagem de erro como resposta
     }
 })
 
